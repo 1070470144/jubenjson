@@ -1,0 +1,252 @@
+{
+  "name": "基础版三版",
+  "author": "官方",
+  "version": "1.0.0",
+  "description": "血染钟楼官方基础版剧本，适合新手玩家入门",
+  "is_public": true,
+  "tags": ["官方", "基础", "新手友好"],
+  "characters": [
+    {
+      "id": "librarian",
+      "name": "图书管理员",
+      "team": "townsfolk",
+      "ability": "你开始游戏时会得知一个没在场的外来者角色和一个在场的好人玩家，或者你会得知没有外来者在场。",
+      "flavor": "她知道关于这个小镇的一切... 除了她忘记的那些。",
+      "firstNight": 16,
+      "otherNight": 0,
+      "reminders": ["得知"],
+      "setup": false
+    },
+    {
+      "id": "investigator",
+      "name": "调查员",
+      "team": "townsfolk",
+      "ability": "你开始游戏时会得知两个玩家，他们当中有一个是指定的爪牙角色。",
+      "flavor": "自从她的搭档不幸身亡后，她就不再信任任何人了。现在她独自工作，为的是保护这个小镇。",
+      "firstNight": 17,
+      "otherNight": 0,
+      "reminders": ["爪牙", "错误"],
+      "setup": false
+    },
+    {
+      "id": "chef",
+      "name": "厨师",
+      "team": "townsfolk",
+      "ability": "你开始游戏时会得知邻座的邪恶玩家有多少个。",
+      "flavor": "其他人向她致谢的方式，就是称她为 ""大厨""。",
+      "firstNight": 18,
+      "otherNight": 0,
+      "reminders": [],
+      "setup": false
+    },
+    {
+      "id": "empath",
+      "name": "共情者",
+      "team": "townsfolk",
+      "ability": "每个夜晚，你会得知邻座的邪恶玩家有多少个。",
+      "flavor": "由于永远不知道别人在想什么，她开始变得疯狂。",
+      "firstNight": 19,
+      "otherNight": 37,
+      "reminders": [],
+      "setup": false
+    },
+    {
+      "id": "fortune_teller",
+      "name": "占卜师",
+      "team": "townsfolk",
+      "ability": "每个夜晚，选择两名玩家：你会得知他们当中是否有恶魔。会有一个好人玩家被登记为恶魔。",
+      "flavor": "水晶球中迷雾缭绕，景象一个接一个地掠过她的面前...",
+      "firstNight": 20,
+      "otherNight": 38,
+      "reminders": ["红色守卫"],
+      "setup": false
+    },
+    {
+      "id": "undertaker",
+      "name": "送葬者",
+      "team": "townsfolk",
+      "ability": "每个夜晚*，你会得知今天白天被处决的玩家是什么角色。",
+      "flavor": "大多数人把死亡视为结局。但她知道，死亡是终极的信息来源。",
+      "firstNight": 0,
+      "otherNight": 39,
+      "reminders": ["被处决"],
+      "setup": false
+    },
+    {
+      "id": "monk",
+      "name": "僧侣",
+      "team": "townsfolk",
+      "ability": "每个夜晚*，选择除你以外的一名玩家：恶魔今晚不能杀死该玩家。",
+      "flavor": "沉默、独居、冥想...",
+      "firstNight": 0,
+      "otherNight": 12,
+      "reminders": ["保护"],
+      "setup": false
+    },
+    {
+      "id": "ravenkeeper",
+      "name": "渡鸦饲养员",
+      "team": "townsfolk",
+      "ability": "如果你在夜晚死亡，你会得知一名玩家的角色。",
+      "flavor": "他与动物的交流超越了简单的训练。只有他和渡鸦们知道真相。",
+      "firstNight": 0,
+      "otherNight": 55,
+      "reminders": [],
+      "setup": false
+    },
+    {
+      "id": "virgin",
+      "name": "处女",
+      "team": "townsfolk",
+      "ability": "如果你首次被提名，提名你的玩家会立即被处决。",
+      "flavor": "她的纯洁天真令所有人都感到羞耻。",
+      "firstNight": 0,
+      "otherNight": 0,
+      "reminders": [],
+      "setup": false
+    },
+    {
+      "id": "slayer",
+      "name": "猎魔人",
+      "team": "townsfolk",
+      "ability": "每局游戏限一次，在白天时，你可以公开选择一名玩家：如果该玩家是恶魔，他会死亡。",
+      "flavor": "她专门追猎那些让这世界变得危险的怪物。",
+      "firstNight": 0,
+      "otherNight": 0,
+      "reminders": ["未使用"],
+      "setup": false
+    },
+    {
+      "id": "soldier",
+      "name": "士兵",
+      "team": "townsfolk",
+      "ability": "恶魔不能杀死你。",
+      "flavor": "整齐的制服，威严的姿态...",
+      "firstNight": 0,
+      "otherNight": 0,
+      "reminders": [],
+      "setup": false
+    },
+    {
+      "id": "mayor",
+      "name": "镇长",
+      "team": "townsfolk",
+      "ability": "如果只有三名玩家存活且没有被处决，你的阵营获胜。如果你在夜晚死亡，会有一名其他玩家也会死亡。",
+      "flavor": "凭借智慧和权威，他有能力团结起整个小镇...",
+      "firstNight": 0,
+      "otherNight": 0,
+      "reminders": [],
+      "setup": false
+    },
+    {
+      "id": "washerwoman",
+      "name": "洗衣妇",
+      "team": "townsfolk",
+      "ability": "你开始游戏时会得知两个玩家，他们当中有一个是指定的村民角色。",
+      "flavor": "她在这座城镇的每一个家庭都有朋友。她一直关注着所有人的秘密，那些秘密流传在街头巷尾。",
+      "firstNight": 21,
+      "otherNight": 0,
+      "reminders": ["村民", "错误"],
+      "setup": false
+    },
+    {
+      "id": "butler",
+      "name": "管家",
+      "team": "outsider",
+      "ability": "每个夜晚，选择一名玩家（不能是你自己）：明天你只能投票给该玩家。",
+      "flavor": "尽职尽责，绝对服从。他活着只为服务主人。",
+      "firstNight": 22,
+      "otherNight": 40,
+      "reminders": ["主人"],
+      "setup": false
+    },
+    {
+      "id": "drunk",
+      "name": "酒鬼",
+      "team": "outsider",
+      "ability": "你不知道你是酒鬼。你以为你是一个村民角色，但你的能力不会生效。",
+      "flavor": "酒杯一个接一个，朗姆酒一口接一口...",
+      "firstNight": 0,
+      "otherNight": 0,
+      "reminders": [],
+      "setup": true
+    },
+    {
+      "id": "recluse",
+      "name": "隐士",
+      "team": "outsider",
+      "ability": "你可能会被当作邪恶阵营，即使你已经死亡。",
+      "flavor": "你唯一的朋友就是带给你食物的送货员。也许你应该更经常洗澡。",
+      "firstNight": 0,
+      "otherNight": 0,
+      "reminders": [],
+      "setup": false
+    },
+    {
+      "id": "saint",
+      "name": "圣女",
+      "team": "outsider",
+      "ability": "如果你在白天被处决，你的阵营落败。",
+      "flavor": "圣洁、纯真、殉道者。",
+      "firstNight": 0,
+      "otherNight": 0,
+      "reminders": [],
+      "setup": false
+    },
+    {
+      "id": "poisoner",
+      "name": "投毒者",
+      "team": "minion",
+      "ability": "每个夜晚，选择一名玩家：该玩家在明天白天和明天夜晚中毒。",
+      "flavor": "对她来说，死亡是一门艺术。其他人看到苦难，而她看到的是美丽。",
+      "firstNight": 23,
+      "otherNight": 7,
+      "reminders": ["中毒"],
+      "setup": false
+    },
+    {
+      "id": "spy",
+      "name": "间谍",
+      "team": "minion",
+      "ability": "每个夜晚，你会得知魔典。你可能会被当作善良阵营，即使你已经死亡。",
+      "flavor": "暗中观察，思考致命的策略。",
+      "firstNight": 24,
+      "otherNight": 41,
+      "reminders": [],
+      "setup": false
+    },
+    {
+      "id": "scarlet_woman",
+      "name": "猩红女郎",
+      "team": "minion",
+      "ability": "如果有5名或更多玩家存活（旅行者除外）且恶魔死亡，你会变成恶魔。",
+      "flavor": "如果你用鲜血作为口红，其他人真的会注意到吗？",
+      "firstNight": 0,
+      "otherNight": 18,
+      "reminders": [],
+      "setup": false
+    },
+    {
+      "id": "baron",
+      "name": "男爵",
+      "team": "minion",
+      "ability": "会有额外的外来者在场。",
+      "flavor": "权力与财富让人堕落，但相比于他现在的样子，那些简直微不足道。",
+      "firstNight": 0,
+      "otherNight": 0,
+      "reminders": [],
+      "setup": true
+    },
+    {
+      "id": "imp",
+      "name": "小恶魔",
+      "team": "demon",
+      "ability": "每个夜晚*，选择一名玩家：该玩家死亡。如果你自杀，会有一名爪牙变成小恶魔。",
+      "flavor": "他是纯粹的邪恶，从最原始和最黑暗的地方诞生。",
+      "firstNight": 0,
+      "otherNight": 25,
+      "reminders": ["死亡"],
+      "setup": false
+    }
+  ]
+}
