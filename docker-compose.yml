@@ -1,0 +1,19 @@
+version: '3.9'
+services:
+  clint:
+    build:
+      context: ./clint
+    image: juben-clint:latest
+    container_name: juben-clint
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+
+  admin:
+    build:
+      context: ./admin
+    image: juben-admin:latest
+    container_name: juben-admin
+    ports:
+      - "8081:80"
+    restart: unless-stopped

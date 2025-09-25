@@ -1,35 +1,31 @@
 import { createClient } from '@supabase/supabase-js';
-import { projectId, publicAnonKey } from './info';
+
+// 从 Vite 环境变量读取配置
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL as string;
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY as string;
+
+if (!supabaseUrl || !supabaseAnonKey) {
+  throw new Error('Missing VITE_SUPABASE_URL or VITE_SUPABASE_ANON_KEY');
+}
 
 // 单例模式确保只有一个Supabase客户端实例
 let supabaseInstance: ReturnType<typeof createClient> | null = null;
 
 export const getSupabaseClient = () => {
   if (!supabaseInstance) {
-    // 检查是否有有效的配置
-    if (!projectId || !publicAnonKey || 
-        projectId === 'your-project-id' || publicAnonKey === 'your-anon-key') {
-      console.warn('Supabase not configured - using demo mode');
-      throw new Error('Supabase not configured');
-    }
-    
     try {
-      supabaseInstance = createClient(
-        `https://${projectId}.supabase.co`,
-        publicAnonKey,
-        {
-          auth: {
-            persistSession: true,
-            autoRefreshToken: true,
-          }
-        }
-      );
+      supabaseInstance = createClient(supabaseUrl, supabaseAnonKey, {
+        auth: {
+          persistSession: true,
+          autoRefreshToken: true,
+        },
+      });
     } catch (error) {
       console.error('Failed to create Supabase client:', error);
       throw error;
     }
   }
-  
+
   return supabaseInstance;
 };
 
