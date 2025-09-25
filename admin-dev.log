@@ -3,7 +3,7 @@
 > vite --port 3001 --host
 
 
-  [32m[1mVITE[22m v6.3.5[39m  [2mready in [0m[1m136[22m[2m[0m ms[22m
+  [32m[1mVITE[22m v6.3.5[39m  [2mready in [0m[1m231[22m[2m[0m ms[22m
 
   [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m3001[22m/[39m
   [32m➜[39m  [1mNetwork[22m: [36mhttp://26.26.26.1:[1m3001[22m/[39m

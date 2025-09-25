@@ -3,7 +3,12 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/
 import { Button } from './ui/button';
 import { Clock, Users, FileText, Trophy, Upload, Download } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
-import { projectId, publicAnonKey } from '../utils/supabase/info';
+// 使用环境变量而非 info.tsx
+const baseUrl = import.meta.env.VITE_SUPABASE_URL as string;
+const anonKey = import.meta.env.VITE_SUPABASE_ANON_KEY as string;
+if (!baseUrl || !anonKey) {
+  throw new Error('Missing VITE_SUPABASE_URL or VITE_SUPABASE_ANON_KEY');
+}
 
 interface HomePageProps {
   setActiveTab: (tab: string) => void;
@@ -11,9 +16,9 @@ interface HomePageProps {
 
 export function HomePage({ setActiveTab }: HomePageProps) {
   const [stats, setStats] = useState({
-    totalScripts: 156,
-    activeUsers: 2341,
-    totalDownloads: 12567
+    totalScripts: 0,
+    activeUsers: 0,
+    totalDownloads: 0
   });
 
   useEffect(() => {
@@ -21,22 +26,13 @@ export function HomePage({ setActiveTab }: HomePageProps) {
     
     const fetchStats = async () => {
       try {
-        // 检查是否有有效的Supabase配置
-        const isDemoMode = !projectId || !publicAnonKey || 
-          projectId === 'your-project-id' || publicAnonKey === 'your-anon-key';
-          
-        if (isDemoMode) {
-          console.log('Demo mode: Using default stats');
-          return;
-        }
-
         const abortController = new AbortController();
-        const timeoutId = setTimeout(() => abortController.abort(), 5000); // 5秒超时
+        const timeoutId = setTimeout(() => abortController.abort(), 5000);
 
         try {
-          const response = await fetch(`https://${projectId}.supabase.co/functions/v1/make-server-010255fd/stats`, {
+          const response = await fetch(`${baseUrl}/functions/v1/make-server-010255fd/stats`, {
             headers: {
-              'Authorization': `Bearer ${publicAnonKey}`
+              'Authorization': `Bearer ${anonKey}`
             },
             signal: abortController.signal
           });
@@ -46,9 +42,9 @@ export function HomePage({ setActiveTab }: HomePageProps) {
           if (response.ok && isMounted) {
             const data = await response.json();
             setStats({
-              totalScripts: data.totalScripts || 156,
-              activeUsers: data.activeAuthors || 2341,
-              totalDownloads: data.totalDownloads || 12567
+              totalScripts: data.totalScripts ?? 0,
+              activeUsers: data.activeAuthors ?? 0,
+              totalDownloads: data.totalDownloads ?? 0
             });
           }
         } catch (fetchError) {
@@ -56,12 +52,11 @@ export function HomePage({ setActiveTab }: HomePageProps) {
           throw fetchError;
         }
       } catch (error) {
-        if (error.name === 'AbortError') {
-          console.log('Stats request timed out, using default values');
+        if ((error as any).name === 'AbortError') {
+          console.log('Stats request timed out');
         } else {
-          console.log('Error fetching stats, using default values:', error.message);
+          console.log('Error fetching stats:', (error as any).message ?? error);
         }
-        // Keep default values if request fails
       }
     };
 
